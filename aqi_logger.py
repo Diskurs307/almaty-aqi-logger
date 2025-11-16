@@ -10,8 +10,8 @@ from google.oauth2.service_account import Credentials
 def get_aqi_from_iqair():
     api_key = os.environ["IQAIR_API_KEY"]
     url = (
-        "https://api.airvisual.com/v2/city"
-        "?city=Almaty&state=Almaty&country=Kazakhstan"
+        "https://api.airvisual.com/v2/nearest_city"
+        "?lat=43.238949&lon=76.889709"
         f"&key={api_key}"
     )
     resp = requests.get(url, timeout=10)
@@ -35,7 +35,6 @@ def get_aqi_from_iqair():
         "temp_c": temp_c,
         "humidity": humidity,
     }
-
 
 def append_to_google_sheet(row_dict):
     sa_info = json.loads(os.environ["GCP_SERVICE_ACCOUNT_JSON"])

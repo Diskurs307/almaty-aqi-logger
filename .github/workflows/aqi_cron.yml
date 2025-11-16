@@ -2,8 +2,9 @@ name: AQI Logger
 
 on:
   schedule:
-    - cron: "0 * * * *"   # каждый час
-  workflow_dispatch: {}    # можно запускать руками
+    # Запуск каждый час в начале часа (время по UTC)
+    - cron: "0 * * * *"
+  workflow_dispatch: {}  # возможность запускать руками из UI
 
 jobs:
   run-aqi-logger:
